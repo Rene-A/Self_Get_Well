@@ -1,0 +1,1 @@
+The database folder holds the files necessary to interact with whatever database we decide to use.

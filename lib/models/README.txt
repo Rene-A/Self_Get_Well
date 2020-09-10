@@ -1,0 +1,1 @@
+The models folder holds classes intended to model some object that is not Flutter specific.

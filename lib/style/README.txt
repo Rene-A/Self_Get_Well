@@ -1,0 +1,1 @@
+The style folder holds text styles used throughout our project.

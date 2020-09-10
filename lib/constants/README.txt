@@ -1,0 +1,1 @@
+The constants folder holds constants used throughout the project.

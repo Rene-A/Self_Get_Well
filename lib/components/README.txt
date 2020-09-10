@@ -1,0 +1,1 @@
+The components folder is intended to hold any widgets used in more than one file of our project.
