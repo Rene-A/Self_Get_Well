@@ -3,7 +3,7 @@ A mental well-being app which allows users to track their mood over time, monito
 
 Collaborators:
 
-Ryan McKenzie
-Peter Strawn
-Jeremy Bright
+Ryan McKenzie,
+Peter Strawn,
+Jeremy Bright,
 Rene Arana
