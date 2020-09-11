@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
 import 'package:self_get_well/constants/constants.dart';
+import 'daily_check_in.dart';
+import 'daily_check_in.dart';
+import 'help.dart';
+import 'mood_tracker.dart';
+import 'resources.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -22,10 +27,34 @@ class navButtons extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          navButton(buttonTitle: "Daily Check-in"),
-          navButton(buttonTitle: "Track Your Mood"),
-          navButton(buttonTitle: "Resources"),
-          navButton(buttonTitle: "Get Help")
+          navButton(
+            buttonTitle: "Daily Check-in",
+            toRoute: () => {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => checkInPage()))
+            },
+          ),
+          navButton(
+            buttonTitle: "Track Your Mood",
+            toRoute: () => {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => moodTracker()))
+            },
+          ),
+          navButton(
+            buttonTitle: "Resources",
+            toRoute: () => {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => resourcePage()))
+            },
+          ),
+          navButton(
+            buttonTitle: "Get Help",
+            toRoute: () => {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => helpPage()))
+            },
+          )
         ],
       ),
     );
@@ -34,8 +63,9 @@ class navButtons extends StatelessWidget {
 
 class navButton extends StatelessWidget {
   final String buttonTitle;
+  final Function toRoute;
 
-  navButton({@required this.buttonTitle});
+  navButton({@required this.buttonTitle, @required this.toRoute});
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +76,9 @@ class navButton extends StatelessWidget {
             height: 35,
           ),
           RaisedButton(
-            onPressed: () {},
+            onPressed: () {
+              toRoute();
+            },
             textColor: Colors.white,
             padding: const EdgeInsets.all(0.0),
             child: Container(
