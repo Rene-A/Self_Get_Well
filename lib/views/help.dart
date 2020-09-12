@@ -6,36 +6,83 @@ class HelpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFF80CEF5),
       appBar: AppBar(
         centerTitle: true,
         title: Text(Constants.getHelpName),
       ),
-      body: Column(
-          children: [
-            Text("Help is available",
-                style: TextStyle(fontSize: 28, color: Colors.black),
-                textAlign: TextAlign.center,
-                ),
-            Text("Speak to a counselor today",
-                style: TextStyle(fontSize: 28, color: Colors.black),
-                textAlign: TextAlign.center,
-                ),
-          RaisedButton(
-                child: Text("Call for Help",
-                style: TextStyle(fontSize: 18, color: Colors.black),
-                textAlign: TextAlign.center
-                ),
-                onPressed: callNumber,
-                ),
-              ],
-          ),
-       );
-    }
+      body: CallPanel(),
+    );
+  }
+}
+
+class CallPanel extends StatelessWidget {
+  //Add new numbers and names to these lists, in order
+  final List<String> callTargets = ['Suicide Hotline', 'Filler'];
+  final List<String> numbers = ['8002738255', 'XXXXXXXXX'];
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.separated(
+        primary: false,
+        itemBuilder: (BuildContext context, int index) {
+          return Container(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(colors: [
+              Color(0xFF007CFF),
+              Color(0xFF6ACCC1),
+              Color(0xFF7DE39D)
+            ])),
+            child: ListTile(
+              title: Text(
+                callTargets[index],
+                style:
+                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              ),
+              trailing: RaisedButton(
+                  color: Color(0xFF49BAAD),
+                  padding: EdgeInsets.all(0.0),
+                  child: Container(
+                      child: Text(
+                    "Call",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20.0),
+                  )),
+                  onPressed: () => callNumber(numbers[index])),
+            ),
+          );
+        },
+        separatorBuilder: (BuildContext context, int index) => Divider(),
+        itemCount: numbers.length);
+  }
 }
 
 // function used to call number when raised button is pressed
-callNumber() async{
-  const number = '8002738255'; // number to suicide hotline
+callNumber(number) async {
+  // number to suicide hotline
   bool res = await FlutterPhoneDirectCaller.callNumber(number);
 }
 
+// This was the original code in the body field, didn't want to delete
+// Column(
+//         children: [
+//           Text(
+//             "Help is available",
+//             style: TextStyle(fontSize: 28, color: Colors.black),
+//             textAlign: TextAlign.center,
+//           ),
+//           Text(
+//             "Speak to a counselor today",
+//             style: TextStyle(fontSize: 28, color: Colors.black),
+//             textAlign: TextAlign.center,
+//           ),
+//           RaisedButton(
+//             child: Text("Call for Help",
+//                 style: TextStyle(fontSize: 18, color: Colors.black),
+//                 textAlign: TextAlign.center),
+//             onPressed: callNumber,
+//           ),
+//         ],
+//       )
