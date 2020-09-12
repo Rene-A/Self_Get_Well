@@ -1,39 +1,29 @@
-// Meant to capture the information provided by the daily check in form
-// Using this model requires that the questions be in a consistent order in the
-// array.  The idea is to match every answer with ever question in the daily
-// check in form by placing the answers into the array in the same order.
-
+// Captures the sum of the daily check in answers.
 class MoodEntry {
-  List<int> answers;
+  int sum;
   DateTime date;
 
-  MoodEntry({this.answers, this.date}) {
+  MoodEntry({this.sum = 0, this.date}) {
 
-    if (answers == null) {
+    if (date == null) {
 
-      answers = [];
+      date = DateTime.now();
     }
   }
 
-  int sumOfAnswers() {
+  // Sets this object's sum to the sum of a list of ints.
+  void setSumFromList(List<int> answers) {
 
-    int sum = 0;
+    sum = 0;
 
     answers.forEach((element) {
       sum += element;
     });
-
-    return sum;
-  }
-
-  void add(int answer) {
-
-    answers.add(answer);
   }
 
   String toString() {
 
-    return  'answers: $answers\n' + 
+    return  'sum: $sum\n' + 
             'date: ${date.toString()}\n';
   }
 }

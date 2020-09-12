@@ -1,3 +1,4 @@
+
 import 'package:self_get_well/models/mood_entry.dart';
 import 'package:test/test.dart';
 
@@ -7,43 +8,43 @@ void main() {
 
     final DateTime date = DateTime.parse('2020-09-11');
     List<int> answers = [1, 2, 3];
+    int sum = 5;
 
     test('Input is not modified by the model.', () {
 
-      final MoodEntry moodEntry = MoodEntry(answers: answers, date: date);
+      final MoodEntry moodEntry = MoodEntry(sum: sum, date: date);
 
-      expect(moodEntry.sumOfAnswers(), 6);
-      expect(moodEntry.answers, [1, 2, 3]);
+      expect(moodEntry.sum, sum);
       expect(moodEntry.date, date);
     });
 
-    test('The mood_entry class returns the correct sum of a given array.', () {
+    test('setSumFromList function correctly sets the sum of the MoodEntry.', () {
 
-      final MoodEntry moodEntry = MoodEntry(answers: answers);
-
-      expect(moodEntry.sumOfAnswers(), 6);
+      final MoodEntry moodEntry = MoodEntry();
+      moodEntry.setSumFromList(answers);
+      expect(moodEntry.sum, 6);
     });
 
-    test('The sum is properly calculated after a new answer is added to the list.', () {
+    test('The sum is properly updated by setSumFromList when a new list is used.', () {
       
-      final MoodEntry moodEntry = MoodEntry(answers: answers);
+      List<int> setTwo = [0, 4, 5];
 
-      expect(moodEntry.sumOfAnswers(), 6);
+      final MoodEntry moodEntry = MoodEntry();
+      moodEntry.setSumFromList(answers);
+      expect(moodEntry.sum, 6);
 
-      moodEntry.add(1);
+      moodEntry.setSumFromList(setTwo);
+      expect(moodEntry.sum, 9);
 
-      expect(moodEntry.sumOfAnswers(), 7);
     });
 
-    test('You can add to the answers list without providing an array at initialization.', () {
+    test('Default values are provided by the constructor.', () {
       
       final MoodEntry moodEntry = MoodEntry();
 
-      expect(moodEntry.sumOfAnswers(), 0);
+      expect(moodEntry.sum, 0);
 
-      moodEntry.add(1);
-
-      expect(moodEntry.sumOfAnswers(), 1);
+      assert(moodEntry.date != null);
     });
   });
 }
