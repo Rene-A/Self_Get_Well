@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
 import 'package:self_get_well/constants/constants.dart';
 import 'daily_check_in.dart';
-import 'daily_check_in.dart';
 import 'help.dart';
 import 'mood_tracker.dart';
 import 'resources.dart';
@@ -15,44 +14,44 @@ class HomePage extends StatelessWidget {
         centerTitle: true,
         title: Text(Constants.appName),
       ),
-      body: navButtons(),
+      body: NavButtons(),
     );
   }
 }
 
-class navButtons extends StatelessWidget {
+class NavButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          navButton(
+          NavButton(
             buttonTitle: "Daily Check-in",
             toRoute: () => {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => checkInPage()))
+                  MaterialPageRoute(builder: (context) => CheckInPage()))
             },
           ),
-          navButton(
+          NavButton(
             buttonTitle: "Track Your Mood",
             toRoute: () => {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => moodTracker()))
+                  MaterialPageRoute(builder: (context) => MoodTracker()))
             },
           ),
-          navButton(
+          NavButton(
             buttonTitle: "Resources",
             toRoute: () => {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => resourcePage()))
+                  MaterialPageRoute(builder: (context) => ResourcePage()))
             },
           ),
-          navButton(
+          NavButton(
             buttonTitle: "Get Help",
             toRoute: () => {
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => helpPage()))
+                  context, MaterialPageRoute(builder: (context) => HelpPage()))
             },
           )
         ],
@@ -61,11 +60,11 @@ class navButtons extends StatelessWidget {
   }
 }
 
-class navButton extends StatelessWidget {
+class NavButton extends StatelessWidget {
   final String buttonTitle;
   final Function toRoute;
 
-  navButton({@required this.buttonTitle, @required this.toRoute});
+  NavButton({@required this.buttonTitle, @required this.toRoute});
 
   @override
   Widget build(BuildContext context) {

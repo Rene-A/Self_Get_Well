@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../constants/constants.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 
-class helpPage extends StatelessWidget {
+class HelpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -4,7 +4,6 @@ As a start we will have views for:
 
 Home page
 Daily Check_In
-Results
 Mood Tracker
 Help
 Resources
