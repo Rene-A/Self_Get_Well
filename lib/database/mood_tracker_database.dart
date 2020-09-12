@@ -75,7 +75,7 @@ class MoodTrackerDatabase {
         sum: record['sum'],
         date: DateTime.parse(record['date'])
       );
-    });
+    }).toList();
   }
 
   Future< List<MoodEntry> > getLastWeekMoodEntries() async {
