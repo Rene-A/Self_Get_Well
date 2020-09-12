@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../constants/constants.dart';
 
-class helpPage extends StatelessWidget {
+class HelpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

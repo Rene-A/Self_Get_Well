@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../constants/constants.dart';
 
-class moodTracker extends StatelessWidget {
+class MoodTracker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
