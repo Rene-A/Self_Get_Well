@@ -70,7 +70,7 @@ class ResourceList extends StatelessWidget {
                   names[index],
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      fontSize: 15.0,
+                      fontSize: 18.0,
                       color: Colors.white,
                       fontWeight: FontWeight.bold),
                 ),

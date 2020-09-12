@@ -88,7 +88,7 @@ class NavButton extends StatelessWidget {
                   colors: <Color>[
                     Color(0xFF007CFF),
                     Color(0xFF00A6FF),
-                    Color(0xFF9DFFFF)
+                    Color(0xFF3FFFFF)
                   ],
                 ),
               ),
