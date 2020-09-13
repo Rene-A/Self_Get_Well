@@ -211,7 +211,7 @@ class CheckInPageState extends State<CheckInPage> {
                       height: 28,
                     ),
                     Text(
-                      'Feeling bad about yourself - or that you are a failutre or have let yourself or your family down?',
+                      'Feeling bad about yourself - or that you are a failure or have let yourself or your family down?',
                       style: TextStyle(
                         fontSize: 22,
                       ),
