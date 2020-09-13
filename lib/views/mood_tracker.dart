@@ -47,14 +47,14 @@ class _MoodTrackerState extends State<MoodTracker> {
               tabs: [Text('Mood Over Time'), Text('More Info')],
             ),
           ),
-          body: TabBarView(children:[buildPage(), buildPage()])
+          body: TabBarView(children:[buildGraph(), buildInfoPage()])
           
         ),
       ),
     );
   }
 
-  Widget buildPage() {
+  Widget buildGraph() {
 
     return FutureBuilder< List<MoodEntry> > (
       future: moodEntries,
@@ -84,8 +84,85 @@ class _MoodTrackerState extends State<MoodTracker> {
       },
     );
   }
-}
 
+  Widget buildInfoPage() {
+
+    return FutureBuilder< List<MoodEntry> > (
+      future: moodEntries,
+      builder: (BuildContext context, AsyncSnapshot< List<MoodEntry> > snapshot) {
+        Widget child;
+
+        if (snapshot.hasData) {
+          child = infoBody(snapshot.data.last);
+        }
+        else if (snapshot.hasError) {
+          child = Text('Error: ${snapshot.error}');
+        }
+        else {
+          child = SizedBox(
+            child: CircularProgressIndicator(),
+            width: 100,
+            height: 100,
+          );
+        }
+
+        return Center(
+          child: child,
+        );
+      },
+    );
+  }
+
+  Widget infoBody(MoodEntry moodEntry) {
+
+    int score = moodEntry.sum;
+
+    EdgeInsets padding = EdgeInsets.all(10);
+
+    List<Widget> rows = [
+      Flexible(
+        child: Container(
+          padding: padding,
+          child: Text('Your most recent score was was $score.')
+        )
+      ),
+      Flexible(
+        child: Container(
+          padding: padding,
+          child: Text('The score ranges between 0 to 27.  A lower score is often associated' +
+          ' with depression like symptoms.'),
+        ),
+      ),
+      Flexible(
+        child: Container(
+          padding: padding,
+          child: Text('If you regularly score below 23, please consider speaking with your' +
+          ' Primary Care Provider about signs of depression.'),
+        ),
+      ),
+      Flexible(
+        child: Container(
+          padding: padding,
+          child: Text('If your score is consistently below 7, please know there are help lines available' +
+          ' on the help page, and resources are listed in the resources page.' +
+          ' Please consider seeking professional assistance.'),
+        ),
+      ),
+      Flexible(
+        child: Container(
+          padding: padding,
+          child: Text('Please note that this is only a tool meant to track your mood.\n' +
+          'This app is not intended to provide a diagnosis.'),
+        ),
+      ),
+    ];
+
+    return Column(
+      children: rows,
+    );
+  }
+
+}
 
 
 // Directly from the documentation

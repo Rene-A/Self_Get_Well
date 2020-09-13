@@ -17,7 +17,7 @@ class MoodTrackerDatabase {
 
   static const String _databaseFilename = 'mood.sqlite3.db';
   static const String _schema = 'CREATE TABLE IF NOT EXISTS mood_entries(mood_id INTEGER PRIMARY KEY AUTOINCREMENT, sum INTEGER NOT NULL, date TEXT NOT NULL);';
-  static const String _sqlSelectAll = 'SELECT * FROM mood_entries';
+  static const String _sqlSelectAll = 'SELECT * FROM mood_entries ORDER BY date ASC';
   static const String _sqlInsertMoodEntry = 
     'INSERT INTO mood_entries(sum, date) VALUES(?, ?)';
 
@@ -84,7 +84,7 @@ class MoodTrackerDatabase {
     String oneWeekPast = DateTime.now().subtract(Duration(days: 7)).toIso8601String();
 
     String _sqlSelectLastWeek = 
-    'SELECT * FROM mood_entries WHERE date >= $oneWeekPast AND date <= $now';
+    'SELECT * FROM mood_entries WHERE date >= $oneWeekPast AND date <= $now ORDER BY date ASC';
 
     List<Map> moodRecords = await database.transaction((txn) async {
       return await txn.rawQuery(_sqlSelectLastWeek);
