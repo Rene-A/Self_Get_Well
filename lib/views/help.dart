@@ -18,7 +18,7 @@ class HelpPage extends StatelessWidget {
 
 class CallPanel extends StatelessWidget {
   //Add new numbers and names to these lists, in order
-  final List<String> callTargets = ['Suicide Lifeline', 'The Samaritans', 'National Teen Dating Violence Hotline', 'Boys Town National Hotline', 'Trevor Project Lifeline',
+  final List<String> callTargets = ['National Suicide Prevention Lifeline', 'The Samaritans', 'National Teen Dating Violence Hotline', 'Boys Town National Hotline', 'Trevor Project Lifeline',
   'Child Help USA National Hotline', 'Military One Source', 'Ayuda En Espa\u00F1ol'];
   final List<String> numbers = ['8002738255', '8778704673', '8663319474', '8004483000', '8664887386', '8004224453', '8003429647', '8886289454'];
 
