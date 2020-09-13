@@ -167,12 +167,13 @@ class _MoodTrackerState extends State<MoodTracker> {
 
 // Directly from the documentation
 // https://google.github.io/charts/flutter/example/time_series_charts/simple
-class _SimpleTimeSeriesChart extends StatelessWidget {
+// https://google.github.io/charts/flutter/example/behaviors/selection_callback_example
+class _SimpleTimeSeriesChart extends StatefulWidget {
 
   final List<charts.Series> seriesList;
   final bool animate;
 
-  _SimpleTimeSeriesChart({this.seriesList, this.animate});
+  _SimpleTimeSeriesChart({Key key, this.seriesList, this.animate}) : super(key: key);
 
   factory _SimpleTimeSeriesChart.buildFromList({List<MoodEntry> moodEntries, bool shouldAnimate}) {
 
@@ -193,11 +194,38 @@ class _SimpleTimeSeriesChart extends StatelessWidget {
   }
 
   @override
+  __SimpleTimeSeriesChartState createState() => __SimpleTimeSeriesChartState();
+}
+
+class __SimpleTimeSeriesChartState extends State<_SimpleTimeSeriesChart> {
+
+  DateTime _time;
+  Map<String, int> _measures;
+
+  @override
   Widget build(BuildContext context) {
     return charts.TimeSeriesChart(
-      seriesList,
-      animate: animate,
+      widget.seriesList,
+      animate: widget.animate,
       dateTimeFactory: const charts.LocalDateTimeFactory(),
+      behaviors: [
+        charts.ChartTitle(
+          'Mood Scores Over Time',
+          behaviorPosition: charts.BehaviorPosition.top,
+          innerPadding: 15
+        ),
+        charts.ChartTitle(
+          'Scores',
+          behaviorPosition: charts.BehaviorPosition.start,
+          titleOutsideJustification: charts.OutsideJustification.middleDrawArea,
+        ),
+        charts.ChartTitle(
+          'Date',
+          behaviorPosition: charts.BehaviorPosition.bottom,
+          titleOutsideJustification: charts.OutsideJustification.middleDrawArea,
+        ),
+        
+      ],
     );
   }
 }
