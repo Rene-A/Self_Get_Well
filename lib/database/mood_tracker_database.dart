@@ -54,9 +54,9 @@ class MoodTrackerDatabase {
     await db.execute(sql);
   }
 
-  void addMoodEntry(MoodEntry entry) async {
+  void addMoodEntry(MoodEntry entry) {
 
-    await database.transaction((txn) async {
+    database.transaction((txn) async {
       await txn.rawInsert(_sqlInsertMoodEntry,
         [entry.sum, entry.date.toIso8601String()]);
     });

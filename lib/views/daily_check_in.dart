@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:self_get_well/constants/constants.dart';
+import 'package:self_get_well/database/mood_tracker_database.dart';
+import 'package:self_get_well/models/mood_entry.dart';
 
 class CheckInPage extends StatefulWidget {
   @override
@@ -18,6 +20,11 @@ class CheckInPageState extends State<CheckInPage> {
     'Not at all',
     'Not at all',
     'Not at all',
+  ];
+  final dropdownOptionTexts = <String>['Not at all',
+    'Several days',
+    'More than half the days',
+    'Nearly every day',
   ];
   final dropdownOptions = <String>['Not at all',
       'Several days',
@@ -260,6 +267,42 @@ class CheckInPageState extends State<CheckInPage> {
                         });
                       },
                       items: dropdownOptions,
+                    ),
+                    SizedBox(
+                      height: 36,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        RaisedButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: Text('Cancel'),
+                        ),
+                        SizedBox(
+                          width: 100,
+                        ),
+                        RaisedButton(
+                          onPressed: () async {
+                            var sum = 0;
+                            for (int i = 0; i < dropdownValues.length; i++) {
+                              if (dropdownValues[i] == dropdownOptionTexts[0]) {
+                                sum += 3;
+                              } else if (dropdownValues[i] == dropdownOptionTexts[1]) {
+                                sum += 2;
+                              } else if (dropdownValues[i] == dropdownOptionTexts[2]) {
+                                sum += 1;
+                              }
+                            }
+                            final db = await MoodTrackerDatabase.getInstance();
+                            final entry = MoodEntry(sum: sum);
+                            db.addMoodEntry(entry);
+                            Navigator.of(context).pop();
+                          },
+                          child: Text('Submit'),
+                        ),
+                      ],
                     ),
                   ],
                 ),
