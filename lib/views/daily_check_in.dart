@@ -40,6 +40,7 @@ class CheckInPageState extends State<CheckInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFF80CEF5),
       appBar: AppBar(
         centerTitle: true,
         title: Text(Constants.checkInName),
@@ -66,13 +67,19 @@ class CheckInPageState extends State<CheckInPage> {
                     ),
                     Text(
                       'Little interest or pleasure in doing things?',
+                      style: TextStyle(
+                        fontSize: 22,
+                      ),
                     ),
                     DropdownButton<String>(
                       value: dropdownValues[0],
                       icon: Icon(Icons.arrow_downward),
                       iconSize: 24,
                       elevation: 16,
-                      style: TextStyle(color: Colors.blue),
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                      ),
                       underline: Container(
                         height: 2,
                         color: Colors.blue,
@@ -85,17 +92,23 @@ class CheckInPageState extends State<CheckInPage> {
                       items: dropdownOptions,
                     ),
                     SizedBox(
-                      height: 18,
+                      height: 28,
                     ),
                     Text(
                       'Feeling down, depressed, or helpless?',
+                      style: TextStyle(
+                        fontSize: 22,
+                      ),
                     ),
                     DropdownButton<String>(
                       value: dropdownValues[1],
                       icon: Icon(Icons.arrow_downward),
                       iconSize: 24,
                       elevation: 16,
-                      style: TextStyle(color: Colors.blue),
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                      ),
                       underline: Container(
                         height: 2,
                         color: Colors.blue,
@@ -108,17 +121,23 @@ class CheckInPageState extends State<CheckInPage> {
                       items: dropdownOptions,
                     ),
                     SizedBox(
-                      height: 18,
+                      height: 28,
                     ),
                     Text(
                       'Trouble falling or staying asleep, or sleeping too much?',
+                      style: TextStyle(
+                        fontSize: 22,
+                      ),
                     ),
                     DropdownButton<String>(
                       value: dropdownValues[2],
                       icon: Icon(Icons.arrow_downward),
                       iconSize: 24,
                       elevation: 16,
-                      style: TextStyle(color: Colors.blue),
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                      ),
                       underline: Container(
                         height: 2,
                         color: Colors.blue,
@@ -131,17 +150,23 @@ class CheckInPageState extends State<CheckInPage> {
                       items: dropdownOptions,
                     ),
                     SizedBox(
-                      height: 18,
+                      height: 28,
                     ),
                     Text(
                       'Feeling tired or having little energy?',
+                      style: TextStyle(
+                        fontSize: 22,
+                      ),
                     ),
                     DropdownButton<String>(
                       value: dropdownValues[3],
                       icon: Icon(Icons.arrow_downward),
                       iconSize: 24,
                       elevation: 16,
-                      style: TextStyle(color: Colors.blue),
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                      ),
                       underline: Container(
                         height: 2,
                         color: Colors.blue,
@@ -154,17 +179,23 @@ class CheckInPageState extends State<CheckInPage> {
                       items: dropdownOptions,
                     ),
                     SizedBox(
-                      height: 18,
+                      height: 28,
                     ),
                     Text(
                       'Poor appetite or overeating?',
+                      style: TextStyle(
+                        fontSize: 22,
+                      ),
                     ),
                     DropdownButton<String>(
                       value: dropdownValues[4],
                       icon: Icon(Icons.arrow_downward),
                       iconSize: 24,
                       elevation: 16,
-                      style: TextStyle(color: Colors.blue),
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                      ),
                       underline: Container(
                         height: 2,
                         color: Colors.blue,
@@ -177,17 +208,23 @@ class CheckInPageState extends State<CheckInPage> {
                       items: dropdownOptions,
                     ),
                     SizedBox(
-                      height: 18,
+                      height: 28,
                     ),
                     Text(
                       'Feeling bad about yourself - or that you are a failutre or have let yourself or your family down?',
+                      style: TextStyle(
+                        fontSize: 22,
+                      ),
                     ),
                     DropdownButton<String>(
                       value: dropdownValues[5],
                       icon: Icon(Icons.arrow_downward),
                       iconSize: 24,
                       elevation: 16,
-                      style: TextStyle(color: Colors.blue),
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                      ),
                       underline: Container(
                         height: 2,
                         color: Colors.blue,
@@ -200,17 +237,23 @@ class CheckInPageState extends State<CheckInPage> {
                       items: dropdownOptions,
                     ),
                     SizedBox(
-                      height: 18,
+                      height: 28,
                     ),
                     Text(
                       'Trouble concentrting on things, such as reading the newspaper or watching television?',
+                      style: TextStyle(
+                        fontSize: 22,
+                      ),
                     ),
                     DropdownButton<String>(
                       value: dropdownValues[6],
                       icon: Icon(Icons.arrow_downward),
                       iconSize: 24,
                       elevation: 16,
-                      style: TextStyle(color: Colors.blue),
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                      ),
                       underline: Container(
                         height: 2,
                         color: Colors.blue,
@@ -223,17 +266,23 @@ class CheckInPageState extends State<CheckInPage> {
                       items: dropdownOptions,
                     ),
                     SizedBox(
-                      height: 18,
+                      height: 28,
                     ),
                     Text(
                       'Moving or speaking so slowly that other people could have noticed? Or so fidgety or restless that you have been moving a lot more than usual?',
+                      style: TextStyle(
+                        fontSize: 22,
+                      ),
                     ),
                     DropdownButton<String>(
                       value: dropdownValues[7],
                       icon: Icon(Icons.arrow_downward),
                       iconSize: 24,
                       elevation: 16,
-                      style: TextStyle(color: Colors.blue),
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                      ),
                       underline: Container(
                         height: 2,
                         color: Colors.blue,
@@ -246,17 +295,23 @@ class CheckInPageState extends State<CheckInPage> {
                       items: dropdownOptions,
                     ),
                     SizedBox(
-                      height: 18,
+                      height: 28,
                     ),
                     Text(
                       'Thoughts that you would be better off dead, or thoughts of hurting yourself in some way?',
+                      style: TextStyle(
+                        fontSize: 22,
+                      ),
                     ),
                     DropdownButton<String>(
                       value: dropdownValues[8],
                       icon: Icon(Icons.arrow_downward),
                       iconSize: 24,
                       elevation: 16,
-                      style: TextStyle(color: Colors.blue),
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                      ),
                       underline: Container(
                         height: 2,
                         color: Colors.blue,
@@ -275,6 +330,9 @@ class CheckInPageState extends State<CheckInPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         RaisedButton(
+                          color: Color(0xFF007CFF),
+                          textColor: Color(0xFFFFFFFF),
+                          splashColor: Color(0xFF44A6FF),
                           onPressed: () {
                             Navigator.of(context).pop();
                           },
@@ -284,6 +342,9 @@ class CheckInPageState extends State<CheckInPage> {
                           width: 100,
                         ),
                         RaisedButton(
+                          color: Color(0xFF007CFF),
+                          textColor: Color(0xFFFFFFFF),
+                          splashColor: Color(0xFF44A6FF),
                           onPressed: () async {
                             var sum = 0;
                             for (int i = 0; i < dropdownValues.length; i++) {
