@@ -97,7 +97,7 @@ class MoodTrackerDatabase {
         sum: record['sum'],
         date: DateTime.parse(record['date'])
       );
-    });
+    }).toList();
   }
 
   // More generic version that lets you specify the timeframe
