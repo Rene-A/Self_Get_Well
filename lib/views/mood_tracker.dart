@@ -41,33 +41,35 @@ class _MoodTrackerState extends State<MoodTracker> {
         centerTitle: true,
         title: Text(Constants.moodTrackerName),
       ),
-      body: Container(
-        child: FutureBuilder< List<MoodEntry> > (
-          future: moodEntries,
-          builder: (BuildContext context, AsyncSnapshot< List<MoodEntry> > snapshot) {
-            Widget child;
+      body: SafeArea(
+        child: Container(
+          child: FutureBuilder< List<MoodEntry> > (
+            future: moodEntries,
+            builder: (BuildContext context, AsyncSnapshot< List<MoodEntry> > snapshot) {
+              Widget child;
 
-            if (snapshot.hasData) {
-              child = SimpleTimeSeriesChart.buildFromList(
-                moodEntries: snapshot.data,
-                shouldAnimate: true,
-              );
-            }
-            else if (snapshot.hasError) {
-              child = Text('Error: ${snapshot.error}');
-            }
-            else {
-              child = SizedBox(
-                child: CircularProgressIndicator(),
-                width: 100,
-                height: 100,
-              );
-            }
+              if (snapshot.hasData) {
+                child = SimpleTimeSeriesChart.buildFromList(
+                  moodEntries: snapshot.data,
+                  shouldAnimate: true,
+                );
+              }
+              else if (snapshot.hasError) {
+                child = Text('Error: ${snapshot.error}');
+              }
+              else {
+                child = SizedBox(
+                  child: CircularProgressIndicator(),
+                  width: 100,
+                  height: 100,
+                );
+              }
 
-            return Center(
-              child: child,
-            );
-          },
+              return Center(
+                child: child,
+              );
+            },
+          ),
         ),
       )
     );

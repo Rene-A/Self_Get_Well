@@ -43,7 +43,7 @@ class MoodTrackerDatabase {
       version: 1,
       onCreate: (Database db, int version) {
         _createTables(db, _schema);
-        _addDummyData(db);
+       // _addDummyData(db);
       }
     );
     _instance = MoodTrackerDatabase._(database: db);
