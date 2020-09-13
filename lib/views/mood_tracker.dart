@@ -38,16 +38,18 @@ class _MoodTrackerState extends State<MoodTracker> {
     // https://api.flutter.dev/flutter/widgets/FutureBuilder-class.html
     return DefaultTabController(
       length: 2,
-      child: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text(Constants.moodTrackerName),
-          bottom: TabBar(
-            tabs: [Text('Mood Over Time'), Text('More Info')],
+      child: SafeArea(
+        child: Scaffold(
+          appBar: AppBar(
+            centerTitle: true,
+            title: Text(Constants.moodTrackerName),
+            bottom: TabBar(
+              tabs: [Text('Mood Over Time'), Text('More Info')],
+            ),
           ),
+          body: TabBarView(children:[buildPage(), buildPage()])
+          
         ),
-        body: TabBarView(children:[buildPage(), buildPage()])
-        
       ),
     );
   }
