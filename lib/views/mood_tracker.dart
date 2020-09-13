@@ -168,7 +168,7 @@ class _MoodTrackerState extends State<MoodTracker> {
 // Directly from the documentation
 // https://google.github.io/charts/flutter/example/time_series_charts/simple
 // https://google.github.io/charts/flutter/example/behaviors/selection_callback_example
-class _SimpleTimeSeriesChart extends StatefulWidget {
+class _SimpleTimeSeriesChart extends StatelessWidget {
 
   final List<charts.Series> seriesList;
   final bool animate;
@@ -194,19 +194,10 @@ class _SimpleTimeSeriesChart extends StatefulWidget {
   }
 
   @override
-  __SimpleTimeSeriesChartState createState() => __SimpleTimeSeriesChartState();
-}
-
-class __SimpleTimeSeriesChartState extends State<_SimpleTimeSeriesChart> {
-
-  DateTime _time;
-  Map<String, int> _measures;
-
-  @override
   Widget build(BuildContext context) {
     return charts.TimeSeriesChart(
-      widget.seriesList,
-      animate: widget.animate,
+      seriesList,
+      animate: animate,
       dateTimeFactory: const charts.LocalDateTimeFactory(),
       behaviors: [
         charts.ChartTitle(
@@ -224,7 +215,6 @@ class __SimpleTimeSeriesChartState extends State<_SimpleTimeSeriesChart> {
           behaviorPosition: charts.BehaviorPosition.bottom,
           titleOutsideJustification: charts.OutsideJustification.middleDrawArea,
         ),
-        
       ],
     );
   }
