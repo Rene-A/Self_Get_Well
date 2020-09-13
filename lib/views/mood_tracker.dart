@@ -36,54 +36,66 @@ class _MoodTrackerState extends State<MoodTracker> {
   Widget build(BuildContext context) {
 
     // https://api.flutter.dev/flutter/widgets/FutureBuilder-class.html
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(Constants.moodTrackerName),
-      ),
-      body: Container(
-        child: FutureBuilder< List<MoodEntry> > (
-          future: moodEntries,
-          builder: (BuildContext context, AsyncSnapshot< List<MoodEntry> > snapshot) {
-            Widget child;
-
-            if (snapshot.hasData) {
-              child = SimpleTimeSeriesChart.buildFromList(
-                moodEntries: snapshot.data,
-                shouldAnimate: true,
-              );
-            }
-            else if (snapshot.hasError) {
-              child = Text('Error: ${snapshot.error}');
-            }
-            else {
-              child = SizedBox(
-                child: CircularProgressIndicator(),
-                width: 100,
-                height: 100,
-              );
-            }
-
-            return Center(
-              child: child,
-            );
-          },
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text(Constants.moodTrackerName),
+          bottom: TabBar(
+            tabs: [Text('Mood Over Time'), Text('More Info')],
+          ),
         ),
-      )
+        body: TabBarView(children:[buildPage(), buildPage()])
+        
+      ),
+    );
+  }
+
+  Widget buildPage() {
+
+    return FutureBuilder< List<MoodEntry> > (
+      future: moodEntries,
+      builder: (BuildContext context, AsyncSnapshot< List<MoodEntry> > snapshot) {
+        Widget child;
+
+        if (snapshot.hasData) {
+          child = _SimpleTimeSeriesChart.buildFromList(
+            moodEntries: snapshot.data,
+            shouldAnimate: true,
+          );
+        }
+        else if (snapshot.hasError) {
+          child = Text('Error: ${snapshot.error}');
+        }
+        else {
+          child = SizedBox(
+            child: CircularProgressIndicator(),
+            width: 100,
+            height: 100,
+          );
+        }
+
+        return Center(
+          child: child,
+        );
+      },
     );
   }
 }
 
+
+
 // Directly from the documentation
 // https://google.github.io/charts/flutter/example/time_series_charts/simple
-class SimpleTimeSeriesChart extends StatelessWidget {
+class _SimpleTimeSeriesChart extends StatelessWidget {
 
   final List<charts.Series> seriesList;
   final bool animate;
 
-  SimpleTimeSeriesChart({this.seriesList, this.animate});
+  _SimpleTimeSeriesChart({this.seriesList, this.animate});
 
-  factory SimpleTimeSeriesChart.buildFromList({List<MoodEntry> moodEntries, bool shouldAnimate}) {
+  factory _SimpleTimeSeriesChart.buildFromList({List<MoodEntry> moodEntries, bool shouldAnimate}) {
 
     List< charts.Series<MoodEntry, DateTime> > tempList = [
       charts.Series<MoodEntry, DateTime>(
@@ -95,7 +107,7 @@ class SimpleTimeSeriesChart extends StatelessWidget {
       )
     ];
 
-    return SimpleTimeSeriesChart(
+    return _SimpleTimeSeriesChart(
       seriesList: tempList,
       animate: shouldAnimate,
     );
